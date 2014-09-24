@@ -19,6 +19,16 @@
        successBlock:(void (^)(NSURL * url))successBlock
        failureBlock:(void (^)(NSError *error))failureBlock
 {
+    if (image == nil)
+    {
+        if (failureBlock)
+        {
+            failureBlock([MCNetworkManager imputError]);
+        }
+        
+        return;
+    }
+    
     NSURLSession *urlSession = [MCNetworkManager urlSession];
     NSURLRequest *urlRequest = [MCNetworkManager urlRequest];
     NSMutableData *urlRequestBody = [MCNetworkManager requestBodyWithImageData:UIImagePNGRepresentation(image)];
@@ -63,6 +73,12 @@
 + (NSError *)uploadError
 {
     return [NSError errorWithDomain:@"com.mountaincoders.elmstagram" code:10001 userInfo:nil];
+}
+
+
++ (NSError *)imputError
+{
+    return [NSError errorWithDomain:@"com.mountaincoders.elmstagram" code:10002 userInfo:nil];
 }
 
 
