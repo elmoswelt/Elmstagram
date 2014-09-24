@@ -37,7 +37,17 @@ static const CGFloat kSpacer = 10.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self setup];
+}
+
+
+// ------------------------------------------------------------------------------------------
+#pragma mark - Deallocation
+// ------------------------------------------------------------------------------------------
+- (void)dealloc
+{
+    self.imagePickerController.delegate = nil;
 }
 
 
@@ -50,6 +60,7 @@ static const CGFloat kSpacer = 10.0;
     [self setupFilterPickerView];
     [self setupFilterDescriptionLabel];
 }
+
 
 - (void)setupImageView
 {
@@ -69,7 +80,46 @@ static const CGFloat kSpacer = 10.0;
     self.filterPickerView.bottom = self.view.height - kSpacer - self.filterPickerView.height;
     self.filterPickerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1];
     
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(kSpacer, 20.0, 100.0, 44.0);
+    [button setTitle:@"Apply Filter" forState:UIControlStateNormal];
+    button.layer.cornerRadius = 3.0;
+    button.layer.borderColor = [UIColor redColor].CGColor;
+    button.layer.borderWidth = 1.0;
+    
+    [button addTarget:self action:@selector(didTapApplyFilter:) forControlEvents:UIControlEventTouchUpInside];
+    [self.filterPickerView addSubview:button];
+    
     [self.view addSubview:self.filterPickerView];
+}
+
+
+- (void)didTapApplyFilter:(id)sender
+{
+    CIContext *context = [self filterContext];
+    CIImage *ciImage = [[CIImage alloc] initWithImage:self.originalImage];
+    
+    CIFilter *blurFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [blurFilter setValue:ciImage forKey:kCIInputImageKey];
+    
+    CGRect outputRect= CGRectMake(0.0, 0.0, self.imageView.image.size.width, self.imageView.image.size.height);
+    CGImageRef ref = [context createCGImage:blurFilter.outputImage fromRect:outputRect];
+    
+    self.imageView.image = [UIImage imageWithCGImage:ref];
+}
+
+
+- (CIContext *)filterContext
+{
+    static CIContext *context = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^
+    {
+        context = [CIContext contextWithOptions:nil];
+    });
+    
+    return context;
 }
 
 
@@ -83,17 +133,6 @@ static const CGFloat kSpacer = 10.0;
     label.textAlignment = NSTextAlignmentCenter;
     
     [self.view addSubview:label];
-}
-
-
-// ------------------------------------------------------------------------------------------
-#pragma mark - Deallocation
-// ------------------------------------------------------------------------------------------
-- (void)dealloc
-{
-    // TODO: Ist das wirklich notwendig?
-    
-    self.imagePickerController.delegate = nil;
 }
 
 
@@ -146,8 +185,9 @@ static const CGFloat kSpacer = 10.0;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [self.imagePickerController dismissViewControllerAnimated:YES completion:nil];
-    self.imageView.image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    self.originalImage = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    self.imageView.image = self.originalImage;
 }
-
 
 @end
