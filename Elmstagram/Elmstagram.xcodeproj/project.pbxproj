@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		AB3EE59219D336BB00D279D1 /* MCNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3EE59119D336BB00D279D1 /* MCNetworkManager.m */; };
 		AB3EE59619D34C5900D279D1 /* MCImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3EE59519D34C5900D279D1 /* MCImageFilter.m */; };
+		AB3EE5AC19D359DD00D279D1 /* MCFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3EE5A919D359DD00D279D1 /* MCFilterCollectionViewCell.m */; };
+		AB3EE5B419D35F2D00D279D1 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3EE5AF19D35F2D00D279D1 /* 1.png */; };
+		AB3EE5B519D35F2D00D279D1 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3EE5B019D35F2D00D279D1 /* 2.png */; };
+		AB3EE5B619D35F2D00D279D1 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3EE5B119D35F2D00D279D1 /* 3.png */; };
+		AB3EE5B719D35F2D00D279D1 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3EE5B219D35F2D00D279D1 /* 4.png */; };
+		AB3EE5BA19D3623700D279D1 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3EE5B919D3623700D279D1 /* 0.png */; };
 		ABB671F919D31F5200333939 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB671F819D31F5200333939 /* UIView+Extensions.m */; };
 		ABDCEFF019D2F4C800F3EA5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDCEFEF19D2F4C800F3EA5D /* main.m */; };
 		ABDCEFF319D2F4C800F3EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDCEFF219D2F4C800F3EA5D /* AppDelegate.m */; };
@@ -34,6 +40,13 @@
 		AB3EE59119D336BB00D279D1 /* MCNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCNetworkManager.m; sourceTree = "<group>"; };
 		AB3EE59419D34C5900D279D1 /* MCImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCImageFilter.h; sourceTree = "<group>"; };
 		AB3EE59519D34C5900D279D1 /* MCImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCImageFilter.m; sourceTree = "<group>"; };
+		AB3EE5A819D359DD00D279D1 /* MCFilterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCFilterCollectionViewCell.h; sourceTree = "<group>"; };
+		AB3EE5A919D359DD00D279D1 /* MCFilterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCFilterCollectionViewCell.m; sourceTree = "<group>"; };
+		AB3EE5AF19D35F2D00D279D1 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		AB3EE5B019D35F2D00D279D1 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		AB3EE5B119D35F2D00D279D1 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		AB3EE5B219D35F2D00D279D1 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		AB3EE5B919D3623700D279D1 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		ABB671F719D31F5200333939 /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		ABB671F819D31F5200333939 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		ABDCEFEA19D2F4C800F3EA5D /* Elmstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elmstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +100,36 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
+		AB3EE59719D354A600D279D1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				ABDCEFFC19D2F4C800F3EA5D /* LaunchScreen.xib */,
+				ABDCEFF719D2F4C800F3EA5D /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		AB3EE5A719D359DD00D279D1 /* FilterPicker */ = {
+			isa = PBXGroup;
+			children = (
+				AB3EE5A819D359DD00D279D1 /* MCFilterCollectionViewCell.h */,
+				AB3EE5A919D359DD00D279D1 /* MCFilterCollectionViewCell.m */,
+			);
+			path = FilterPicker;
+			sourceTree = "<group>";
+		};
+		AB3EE5AE19D35F2D00D279D1 /* FilterPreviews */ = {
+			isa = PBXGroup;
+			children = (
+				AB3EE5B919D3623700D279D1 /* 0.png */,
+				AB3EE5AF19D35F2D00D279D1 /* 1.png */,
+				AB3EE5B019D35F2D00D279D1 /* 2.png */,
+				AB3EE5B119D35F2D00D279D1 /* 3.png */,
+				AB3EE5B219D35F2D00D279D1 /* 4.png */,
+			);
+			path = FilterPreviews;
+			sourceTree = "<group>";
+		};
 		AB9BF51219D2F96400BFA9D1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +154,7 @@
 		AB9BF51419D2F96400BFA9D1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AB3EE5A719D359DD00D279D1 /* FilterPicker */,
 				AB9BF51919D2FA1600BFA9D1 /* MainView */,
 			);
 			path = Views;
@@ -136,6 +180,7 @@
 		AB9BF51819D2F9C700BFA9D1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				AB3EE5AE19D35F2D00D279D1 /* FilterPreviews */,
 				ABDCEFFA19D2F4C800F3EA5D /* Images.xcassets */,
 			);
 			name = Assets;
@@ -145,8 +190,7 @@
 		AB9BF51919D2FA1600BFA9D1 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				ABDCEFFC19D2F4C800F3EA5D /* LaunchScreen.xib */,
-				ABDCEFF719D2F4C800F3EA5D /* Main.storyboard */,
+				AB3EE59719D354A600D279D1 /* Storyboards */,
 				ABDCEFF419D2F4C800F3EA5D /* MCMainViewController.h */,
 				ABDCEFF519D2F4C800F3EA5D /* MCMainViewController.m */,
 			);
@@ -289,7 +333,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3EE5BA19D3623700D279D1 /* 0.png in Resources */,
 				ABDCEFF919D2F4C800F3EA5D /* Main.storyboard in Resources */,
+				AB3EE5B719D35F2D00D279D1 /* 4.png in Resources */,
+				AB3EE5B419D35F2D00D279D1 /* 1.png in Resources */,
+				AB3EE5B519D35F2D00D279D1 /* 2.png in Resources */,
+				AB3EE5B619D35F2D00D279D1 /* 3.png in Resources */,
 				ABDCEFFE19D2F4C800F3EA5D /* LaunchScreen.xib in Resources */,
 				ABDCEFFB19D2F4C800F3EA5D /* Images.xcassets in Resources */,
 			);
@@ -314,6 +363,7 @@
 				AB3EE59219D336BB00D279D1 /* MCNetworkManager.m in Sources */,
 				ABDCEFF319D2F4C800F3EA5D /* AppDelegate.m in Sources */,
 				ABB671F919D31F5200333939 /* UIView+Extensions.m in Sources */,
+				AB3EE5AC19D359DD00D279D1 /* MCFilterCollectionViewCell.m in Sources */,
 				ABDCEFF019D2F4C800F3EA5D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
