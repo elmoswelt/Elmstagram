@@ -28,14 +28,14 @@
 
 /* Begin PBXFileReference section */
 		ABDCEFEA19D2F4C800F3EA5D /* Elmstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elmstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABDCEFEE19D2F4C800F3EA5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ABDCEFEF19D2F4C800F3EA5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		ABDCEFF119D2F4C800F3EA5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		ABDCEFF219D2F4C800F3EA5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		ABDCEFF419D2F4C800F3EA5D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		ABDCEFF519D2F4C800F3EA5D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		ABDCEFEE19D2F4C800F3EA5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Elmstagram/Info.plist; sourceTree = "<group>"; };
+		ABDCEFEF19D2F4C800F3EA5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../../../main.m; sourceTree = "<group>"; };
+		ABDCEFF119D2F4C800F3EA5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../../../AppDelegate.h; sourceTree = "<group>"; };
+		ABDCEFF219D2F4C800F3EA5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../../../AppDelegate.m; sourceTree = "<group>"; };
+		ABDCEFF419D2F4C800F3EA5D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../../../../ViewController.h; sourceTree = "<group>"; };
+		ABDCEFF519D2F4C800F3EA5D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../../../../ViewController.m; sourceTree = "<group>"; };
 		ABDCEFF819D2F4C800F3EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		ABDCEFFA19D2F4C800F3EA5D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		ABDCEFFA19D2F4C800F3EA5D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../Images.xcassets; sourceTree = "<group>"; };
 		ABDCEFFD19D2F4C800F3EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		ABDCF00319D2F4C800F3EA5D /* ElmstagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElmstagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDCF00819D2F4C800F3EA5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,10 +60,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB9BF51119D2F96400BFA9D1 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Categories;
+			path = Source/Categories;
+			sourceTree = "<group>";
+		};
+		AB9BF51219D2F96400BFA9D1 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AB9BF51319D2F96400BFA9D1 /* Core */,
+				AB9BF51419D2F96400BFA9D1 /* Views */,
+			);
+			name = Classes;
+			path = Source/Classes;
+			sourceTree = "<group>";
+		};
+		AB9BF51319D2F96400BFA9D1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AB9BF51619D2F98900BFA9D1 /* AppDelegate */,
+				AB9BF51719D2F98900BFA9D1 /* Main */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		AB9BF51419D2F96400BFA9D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB9BF51919D2FA1600BFA9D1 /* MainView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB9BF51519D2F96400BFA9D1 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			path = Source/Libraries;
+			sourceTree = "<group>";
+		};
+		AB9BF51619D2F98900BFA9D1 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				ABDCEFF119D2F4C800F3EA5D /* AppDelegate.h */,
+				ABDCEFF219D2F4C800F3EA5D /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		AB9BF51719D2F98900BFA9D1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				ABDCEFEF19D2F4C800F3EA5D /* main.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		AB9BF51819D2F9C700BFA9D1 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				ABDCEFFA19D2F4C800F3EA5D /* Images.xcassets */,
+			);
+			name = Assets;
+			path = Source/Assets;
+			sourceTree = "<group>";
+		};
+		AB9BF51919D2FA1600BFA9D1 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				ABDCEFFC19D2F4C800F3EA5D /* LaunchScreen.xib */,
+				ABDCEFF719D2F4C800F3EA5D /* Main.storyboard */,
+				ABDCEFF419D2F4C800F3EA5D /* ViewController.h */,
+				ABDCEFF519D2F4C800F3EA5D /* ViewController.m */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
 		ABDCEFE119D2F4C800F3EA5D = {
 			isa = PBXGroup;
 			children = (
 				ABDCEFEC19D2F4C800F3EA5D /* Elmstagram */,
+				ABDCEFEE19D2F4C800F3EA5D /* Info.plist */,
 				ABDCF00619D2F4C800F3EA5D /* ElmstagramTests */,
 				ABDCEFEB19D2F4C800F3EA5D /* Products */,
 			);
@@ -81,25 +162,12 @@
 		ABDCEFEC19D2F4C800F3EA5D /* Elmstagram */ = {
 			isa = PBXGroup;
 			children = (
-				ABDCEFF119D2F4C800F3EA5D /* AppDelegate.h */,
-				ABDCEFF219D2F4C800F3EA5D /* AppDelegate.m */,
-				ABDCEFF419D2F4C800F3EA5D /* ViewController.h */,
-				ABDCEFF519D2F4C800F3EA5D /* ViewController.m */,
-				ABDCEFF719D2F4C800F3EA5D /* Main.storyboard */,
-				ABDCEFFA19D2F4C800F3EA5D /* Images.xcassets */,
-				ABDCEFFC19D2F4C800F3EA5D /* LaunchScreen.xib */,
-				ABDCEFED19D2F4C800F3EA5D /* Supporting Files */,
+				AB9BF51819D2F9C700BFA9D1 /* Assets */,
+				AB9BF51119D2F96400BFA9D1 /* Categories */,
+				AB9BF51219D2F96400BFA9D1 /* Classes */,
+				AB9BF51519D2F96400BFA9D1 /* Libraries */,
 			);
 			path = Elmstagram;
-			sourceTree = "<group>";
-		};
-		ABDCEFED19D2F4C800F3EA5D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				ABDCEFEE19D2F4C800F3EA5D /* Info.plist */,
-				ABDCEFEF19D2F4C800F3EA5D /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		ABDCF00619D2F4C800F3EA5D /* ElmstagramTests */ = {
@@ -250,6 +318,7 @@
 				ABDCEFF819D2F4C800F3EA5D /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../../../..;
 			sourceTree = "<group>";
 		};
 		ABDCEFFC19D2F4C800F3EA5D /* LaunchScreen.xib */ = {
@@ -258,6 +327,7 @@
 				ABDCEFFD19D2F4C800F3EA5D /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = ../../../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -412,6 +482,7 @@
 				ABDCF00F19D2F4C800F3EA5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABDCF01019D2F4C800F3EA5D /* Build configuration list for PBXNativeTarget "ElmstagramTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +491,7 @@
 				ABDCF01219D2F4C800F3EA5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
