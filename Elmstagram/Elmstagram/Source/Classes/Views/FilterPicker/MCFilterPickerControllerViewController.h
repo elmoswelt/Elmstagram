@@ -26,6 +26,6 @@
 @interface MCFilterPickerControllerViewController : UIViewController
 
 @property (nonatomic, weak) id<MCFilterPickerControllerViewControllerDelegate> delegate;
-@property (nonatomic, strong) UIImage *sourceImage;
+@property (nonatomic, weak) UIImage *sourceImage;
 
 @end

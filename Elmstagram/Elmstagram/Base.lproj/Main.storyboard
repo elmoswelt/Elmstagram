@@ -20,20 +20,21 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUJ-hZ-AzC">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Elmstagram" id="hOT-JL-Buz">
                                         <barButtonItem key="leftBarButtonItem" title="Image" id="eh7-EY-2KL">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <action selector="didTabImagePickerBarButtonItem:" destination="x5A-6p-PRh" id="vhA-a0-QEj"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Upload" id="o3y-dk-HFt">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <action selector="didTabUploadBarButtonItem:" destination="x5A-6p-PRh" id="dMj-1M-qVe"/>
                                             </connections>
@@ -45,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="72" width="600" height="426"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="yS4-tx-y8x" secondAttribute="trailing" constant="-16" id="7IU-aK-peh"/>
                             <constraint firstItem="yS4-tx-y8x" firstAttribute="top" secondItem="qUJ-hZ-AzC" secondAttribute="bottom" id="Cu2-sL-VxZ"/>

@@ -16,7 +16,6 @@
 
 static const CGFloat kSpacer = 10.0;
 
-
 // ------------------------------------------------------------------------------------------
 
 @interface MCMainViewController () <UIImagePickerControllerDelegate,
@@ -27,9 +26,7 @@ static const CGFloat kSpacer = 10.0;
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImage *originalImage;
-
 @property (nonatomic, strong) MCFilterPickerControllerViewController *filterPicker;
-
 @property (nonatomic, strong) NSURL *imageURL;
 
 @end
@@ -57,6 +54,7 @@ static const CGFloat kSpacer = 10.0;
 - (void)dealloc
 {
     self.imagePickerController.delegate = nil;
+    self.filterPicker.delegate = nil;
 }
 
 
@@ -77,6 +75,8 @@ static const CGFloat kSpacer = 10.0;
     self.imageView = [[UIImageView alloc] initWithFrame:rect];
     self.imageView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView.layer.borderColor = [UIColor colorWithWhite:0.0 alpha:0.23].CGColor;
+    self.imageView.layer.borderWidth = 1.0;
     
     [self.view addSubview:self.imageView];
 }
@@ -90,8 +90,7 @@ static const CGFloat kSpacer = 10.0;
     [self.view addSubview:self.filterPicker.view];
     [self.filterPicker didMoveToParentViewController:self];
     self.filterPicker.delegate = self;
-    
-    self.filterPicker.view.bottom = self.view.height - kSpacer - self.filterPicker.view.height;
+    self.filterPicker.view.bottom = self.view.height - self.filterPicker.view.height;
     self.filterPicker.view.width = self.view.width;
 }
 
@@ -103,7 +102,7 @@ static const CGFloat kSpacer = 10.0;
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     label.bottom = self.imageView.bottom + kSpacer;
     label.text = @"Choose a filter";
-    label.textColor = [UIColor whiteColor];
+    label.textColor = [UIColor darkTextColor];
     label.textAlignment = NSTextAlignmentCenter;
     
     [self.view addSubview:label];
@@ -115,7 +114,7 @@ static const CGFloat kSpacer = 10.0;
 // ------------------------------------------------------------------------------------------
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 

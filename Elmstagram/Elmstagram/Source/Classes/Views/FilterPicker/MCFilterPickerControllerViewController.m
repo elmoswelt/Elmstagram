@@ -10,21 +10,37 @@
 #import "MCFilterCollectionViewCell.h"
 #import "MCImageFilter.h"
 
+// ------------------------------------------------------------------------------------------
+
 @interface MCFilterPickerControllerViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
 
+// ------------------------------------------------------------------------------------------
+
+
 @implementation MCFilterPickerControllerViewController
 
 
+// ------------------------------------------------------------------------------------------
+#pragma mark - View Lifecycle
+// ------------------------------------------------------------------------------------------
 - (void)loadView
 {
+    [super loadView];
+    
     self.view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 100.0)];
-    self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.4];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupFilterPickerView];
+}
+
+
+- (void)dealloc
+{
+    self.collectionView.delegate = nil;
 }
 
 
@@ -36,7 +52,9 @@
 }
 
 
-
+// ------------------------------------------------------------------------------------------
+#pragma mark - Setup
+// ------------------------------------------------------------------------------------------
 - (void)setupFilterPickerView
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -47,7 +65,7 @@
     
     self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
-    self.collectionView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.23];
+    self.collectionView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.23];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -65,7 +83,7 @@
 // ------------------------------------------------------------------------------------------
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return MCImageFilterTypeCount;
 }
 
 
@@ -83,6 +101,18 @@
 }
 
 
+// ------------------------------------------------------------------------------------------
+#pragma mark - UICollectionViewDelegate
+// ------------------------------------------------------------------------------------------
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self applyFilterForIndex:indexPath.row];
+}
+
+
+// ------------------------------------------------------------------------------------------
+#pragma mark - UICollectionViewDelegateFlowLayout
+// ------------------------------------------------------------------------------------------
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -103,12 +133,9 @@
 }
 
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self applyFilterForIndex:indexPath.row];
-}
-
-
+// ------------------------------------------------------------------------------------------
+#pragma mark - Apply Filter
+// ------------------------------------------------------------------------------------------
 - (void)applyFilterForIndex:(NSUInteger)index
 {
     UIImage *image = nil;
