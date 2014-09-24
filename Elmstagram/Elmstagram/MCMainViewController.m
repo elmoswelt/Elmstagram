@@ -8,6 +8,8 @@
 
 #import "MCMainViewController.h"
 #import "MCNetworkManager.h"
+#import "MCImageFilter.h"
+
 #import "UIView+Extensions.h"
 
 // ------------------------------------------------------------------------------------------
@@ -99,30 +101,7 @@ static const CGFloat kSpacer = 10.0;
 
 - (void)didTapApplyFilter:(id)sender
 {
-    CIContext *context = [self filterContext];
-    CIImage *ciImage = [[CIImage alloc] initWithImage:self.originalImage];
-    
-    CIFilter *blurFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
-    [blurFilter setValue:ciImage forKey:kCIInputImageKey];
-    
-    CGRect outputRect= CGRectMake(0.0, 0.0, self.imageView.image.size.width, self.imageView.image.size.height);
-    CGImageRef ref = [context createCGImage:blurFilter.outputImage fromRect:outputRect];
-    
-    self.imageView.image = [UIImage imageWithCGImage:ref];
-}
-
-
-- (CIContext *)filterContext
-{
-    static CIContext *context = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^
-    {
-        context = [CIContext contextWithOptions:nil];
-    });
-    
-    return context;
+    self.imageView.image = [MCImageFilter colorPosterizeImageWithImage:self.imageView.image];
 }
 
 
