@@ -106,6 +106,7 @@
 // ------------------------------------------------------------------------------------------
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [self applyFilterForIndex:indexPath.row];
 }
 
@@ -138,46 +139,52 @@
 // ------------------------------------------------------------------------------------------
 - (void)applyFilterForIndex:(NSUInteger)index
 {
-    UIImage *image = nil;
-    
-    switch (index)
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        case MCImageFilterTypeBlurr:
+        UIImage *image = nil;
+        
+        switch (index)
         {
-            image = [MCImageFilter blurredImageWithImage:self.sourceImage];
-            break;
+            case MCImageFilterTypeBlurr:
+            {
+                image = [MCImageFilter blurredImageWithImage:self.sourceImage];
+                break;
+            }
+            case MCImageFilterTypeColorInvert:
+            {
+                image = [MCImageFilter colorInvertedImageWithImage:self.sourceImage];
+                break;
+            }
+            case MCImageFilterTypeSharpen:
+            {
+                image = [MCImageFilter sharpendImageWithImage:self.sourceImage];
+                break;
+            }
+            case MCImageFilterTypeSepia:
+            {
+                image = [MCImageFilter sepiaImageWithImage:self.sourceImage];
+                break;
+            }
+            case MCImageFilterTypeColorPosterize:
+            {
+                image = [MCImageFilter colorPosterizeImageWithImage:self.sourceImage];
+                break;
+            }
+                
+            default:
+                break;
         }
-        case MCImageFilterTypeColorInvert:
+        
+        dispatch_async(dispatch_get_main_queue(), ^
         {
-            image = [MCImageFilter colorInvertedImageWithImage:self.sourceImage];
-            break;
-        }
-        case MCImageFilterTypeSharpen:
-        {
-            image = [MCImageFilter sharpendImageWithImage:self.sourceImage];
-            break;
-        }
-        case MCImageFilterTypeSepia:
-        {
-            image = [MCImageFilter sepiaImageWithImage:self.sourceImage];
-            break;
-        }
-        case MCImageFilterTypeColorPosterize:
-        {
-            image = [MCImageFilter colorPosterizeImageWithImage:self.sourceImage];
-            break;
-        }
-            
-        default:
-            break;
-    }
-    
-    if (image == nil) return;
-    
-    if ([self.delegate respondsToSelector:@selector(filterPickerControllerViewController:didFinishApplyingFilterWithResultImage:)])
-    {
-        [self.delegate filterPickerControllerViewController:self didFinishApplyingFilterWithResultImage:image];
-    }
+           if (image == nil) return;
+           
+           if ([self.delegate respondsToSelector:@selector(filterPickerControllerViewController:didFinishApplyingFilterWithResultImage:)])
+           {
+               [self.delegate filterPickerControllerViewController:self didFinishApplyingFilterWithResultImage:image];
+           }
+        });
+    });
 }
 
 @end
