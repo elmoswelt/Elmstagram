@@ -122,13 +122,17 @@
 }
 
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+-                   (CGFloat)collectionView:(UICollectionView *)collectionView
+                                     layout:(UICollectionView *)collectionViewLayout
+   minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
     return 10.0;
 }
 
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout*)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
 }
@@ -170,19 +174,19 @@
                 image = [MCImageFilter colorPosterizeImageWithImage:self.sourceImage];
                 break;
             }
-                
             default:
                 break;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^
         {
-           if (image == nil) return;
-           
-           if ([self.delegate respondsToSelector:@selector(filterPickerControllerViewController:didFinishApplyingFilterWithResultImage:)])
-           {
-               [self.delegate filterPickerControllerViewController:self didFinishApplyingFilterWithResultImage:image];
-           }
+            if (image == nil) return;
+        
+            SEL selector = @selector(filterPickerControllerViewController:didFinishApplyingFilterWithResultImage:);
+            if ([self.delegate respondsToSelector:selector])
+            {
+                [self.delegate filterPickerControllerViewController:self didFinishApplyingFilterWithResultImage:image];
+            }
         });
     });
 }
