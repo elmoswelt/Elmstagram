@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, MCImageFilterType)
 
 @interface MCImageFilter : NSObject
 
-
+/** Set of filter convinience methods */
 + (UIImage *)blurredImageWithImage:(UIImage *)sourceImage;
 
 + (UIImage *)colorInvertedImageWithImage:(UIImage *)sourceImage;

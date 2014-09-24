@@ -8,32 +8,24 @@
 
 #import "MCMainViewController.h"
 #import "MCNetworkManager.h"
-#import "MCImageFilter.h"
-
-#import "MCFilterCollectionViewCell.h"
-
+#import "MCFilterPickerControllerViewController.h"
 #import "UIView+Extensions.h"
 
 // ------------------------------------------------------------------------------------------
 
 static const CGFloat kSpacer = 10.0;
 
-
 // ------------------------------------------------------------------------------------------
 
 @interface MCMainViewController () <UIImagePickerControllerDelegate,
                                     UINavigationControllerDelegate,
                                     UIActionSheetDelegate,
-                                    UICollectionViewDataSource,
-                                    UICollectionViewDelegate>
+                                    MCFilterPickerControllerViewControllerDelegate>
 
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImage *originalImage;
-
-@property (nonatomic, strong) UIView *filterPickerView;
-@property (nonatomic, strong) UICollectionView *collectionView;
-
+@property (nonatomic, strong) MCFilterPickerControllerViewController *filterPicker;
 @property (nonatomic, strong) NSURL *imageURL;
 
 @end
@@ -61,6 +53,7 @@ static const CGFloat kSpacer = 10.0;
 - (void)dealloc
 {
     self.imagePickerController.delegate = nil;
+    self.filterPicker.delegate = nil;
 }
 
 
@@ -81,6 +74,8 @@ static const CGFloat kSpacer = 10.0;
     self.imageView = [[UIImageView alloc] initWithFrame:rect];
     self.imageView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView.layer.borderColor = [UIColor colorWithWhite:0.0 alpha:0.23].CGColor;
+    self.imageView.layer.borderWidth = 1.0;
     
     [self.view addSubview:self.imageView];
 }
@@ -88,126 +83,28 @@ static const CGFloat kSpacer = 10.0;
 
 - (void)setupFilterPickerView
 {
-    CGRect rect = CGRectMake(kSpacer, 0.0, self.view.frame.size.width - 2.0 * kSpacer, 100.0);
-    self.filterPickerView = [[UIView alloc] initWithFrame:rect];
-    self.filterPickerView.bottom = self.view.height - kSpacer - self.filterPickerView.height;
-    self.filterPickerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.4];
+    self.filterPicker = [[MCFilterPickerControllerViewController alloc] init];
     
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.filterPickerView.bounds
-                                             collectionViewLayout:layout];
-
-    self.collectionView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.23];
-    
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    
-    [self.collectionView registerClass:[MCFilterCollectionViewCell class]
-            forCellWithReuseIdentifier:[MCFilterCollectionViewCell reuseIdentifier]];
-    
-    [self.filterPickerView addSubview:self.collectionView];
-    [self.view addSubview:self.filterPickerView];
+    [self addChildViewController:self.filterPicker];
+    [self.view addSubview:self.filterPicker.view];
+    [self.filterPicker didMoveToParentViewController:self];
+    self.filterPicker.delegate = self;
+    self.filterPicker.view.bottom = self.view.height - self.filterPicker.view.height;
+    self.filterPicker.view.width = self.view.width;
 }
 
 
 
 - (void)setupFilterDescriptionLabel
 {
-    CGRect rect = CGRectMake(kSpacer, 0.0, self.view.frame.size.width - 20.0, 30.0);
+    CGRect rect = CGRectMake(kSpacer, 15.0, self.view.frame.size.width - 20.0, 30.0);
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     label.bottom = self.imageView.bottom + kSpacer;
     label.text = @"Choose a filter";
-    label.textColor = [UIColor whiteColor];
+    label.textColor = [UIColor darkTextColor];
     label.textAlignment = NSTextAlignmentCenter;
     
     [self.view addSubview:label];
-}
-
-
-// ------------------------------------------------------------------------------------------
-#pragma mark - UICollectionViewDataSource
-// ------------------------------------------------------------------------------------------
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 5;
-}
-
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *reuseIdentifier = [MCFilterCollectionViewCell reuseIdentifier];
-    
-    MCFilterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier
-                                                                                 forIndexPath:indexPath];
-    
-    cell.cellIndex = indexPath.row;
-        
-    return cell;
-}
-
-
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return CGSizeMake(85.0, 85.0);
-}
-
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 10.0;
-}
-
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
-}
-
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self applyFilterForIndex:indexPath.row];
-}
-
-
-- (void)applyFilterForIndex:(NSUInteger)index
-{
-    switch (index)
-    {
-        case MCImageFilterTypeBlurr:
-        {
-            self.imageView.image = [MCImageFilter blurredImageWithImage:self.originalImage];
-            break;
-        }
-        case MCImageFilterTypeColorInvert:
-        {
-            self.imageView.image = [MCImageFilter colorInvertedImageWithImage:self.originalImage];
-            break;
-        }
-        case MCImageFilterTypeSharpen:
-        {
-            self.imageView.image = [MCImageFilter sharpendImageWithImage:self.originalImage];
-            break;
-        }
-        case MCImageFilterTypeSepia:
-        {
-            self.imageView.image = [MCImageFilter sepiaImageWithImage:self.originalImage];
-            break;
-        }
-        case MCImageFilterTypeColorPosterize:
-        {
-            self.imageView.image = [MCImageFilter colorPosterizeImageWithImage:self.originalImage];
-            break;
-        }
-            
-        default:
-            break;
-    }
 }
 
 
@@ -216,7 +113,7 @@ static const CGFloat kSpacer = 10.0;
 // ------------------------------------------------------------------------------------------
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 
@@ -263,6 +160,7 @@ static const CGFloat kSpacer = 10.0;
     self.originalImage = [info valueForKey:UIImagePickerControllerOriginalImage];
     
     self.imageView.image = self.originalImage;
+    self.filterPicker.sourceImage = self.originalImage;
 }
 
 
@@ -311,6 +209,18 @@ static const CGFloat kSpacer = 10.0;
     {
         [[UIApplication sharedApplication] openURL:self.imageURL];
     }
+}
+
+
+// ------------------------------------------------------------------------------------------
+#pragma mark - MCFilterPickerControllerViewControllerDelegate
+// ------------------------------------------------------------------------------------------
+- (void)filterPickerControllerViewController:(MCFilterPickerControllerViewController *)filterPickerControllerViewController didFinishApplyingFilterWithResultImage:(UIImage *)image
+{
+    self.imageView.image = image;
+    
+    // If this one is not set the filter is applied always to the original source image.
+    self.filterPicker.sourceImage = image;
 }
 
 @end

@@ -62,6 +62,8 @@
 // ------------------------------------------------------------------------------------------
 + (UIImage *)filteredImage:(UIImage *)sourceImage withFilterName:(NSString *)filterName
 {
+    if (sourceImage == nil) return sourceImage;
+    
     CIImage *ciImage = [[CIImage alloc] initWithImage:sourceImage];
     
     CIFilter *filter = [CIFilter filterWithName:filterName];
