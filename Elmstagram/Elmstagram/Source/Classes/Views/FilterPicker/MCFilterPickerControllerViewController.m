@@ -41,6 +41,7 @@
 - (void)dealloc
 {
     self.collectionView.delegate = nil;
+    self.collectionView.dataSource = nil;
 }
 
 
@@ -64,7 +65,6 @@
                                              collectionViewLayout:layout];
     
     self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    
     self.collectionView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.23];
     
     self.collectionView.delegate = self;
@@ -106,7 +106,6 @@
 // ------------------------------------------------------------------------------------------
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     [self applyFilterForIndex:indexPath.row];
 }
 

@@ -218,6 +218,8 @@ static const CGFloat kSpacer = 10.0;
 - (void)filterPickerControllerViewController:(MCFilterPickerControllerViewController *)filterPickerControllerViewController didFinishApplyingFilterWithResultImage:(UIImage *)image
 {
     self.imageView.image = image;
+    
+    // If this one is not set the filter is applied always to the original source image.
     self.filterPicker.sourceImage = image;
 }
 
