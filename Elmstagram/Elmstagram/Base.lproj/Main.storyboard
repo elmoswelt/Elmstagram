@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -80,7 +81,7 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="imagePickerBarButtonITem" destination="eh7-EY-2KL" id="M2V-JI-Cgq"/>
+                        <outlet property="imagePickerBarButtonItem" destination="eh7-EY-2KL" id="U71-7G-SiR"/>
                         <outlet property="uploadBarButtonItem" destination="o3y-dk-HFt" id="EeR-aj-VBm"/>
                     </connections>
                 </viewController>
