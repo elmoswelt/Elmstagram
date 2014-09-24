@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB3EE59219D336BB00D279D1 /* MCNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3EE59119D336BB00D279D1 /* MCNetworkManager.m */; };
 		ABB671F919D31F5200333939 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB671F819D31F5200333939 /* UIView+Extensions.m */; };
 		ABDCEFF019D2F4C800F3EA5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDCEFEF19D2F4C800F3EA5D /* main.m */; };
 		ABDCEFF319D2F4C800F3EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDCEFF219D2F4C800F3EA5D /* AppDelegate.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB3EE59019D336BB00D279D1 /* MCNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNetworkManager.h; sourceTree = "<group>"; };
+		AB3EE59119D336BB00D279D1 /* MCNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCNetworkManager.m; sourceTree = "<group>"; };
 		ABB671F719D31F5200333939 /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		ABB671F819D31F5200333939 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		ABDCEFEA19D2F4C800F3EA5D /* Elmstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elmstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB3EE58F19D3368900D279D1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AB3EE59019D336BB00D279D1 /* MCNetworkManager.h */,
+				AB3EE59119D336BB00D279D1 /* MCNetworkManager.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		AB9BF51219D2F96400BFA9D1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +88,7 @@
 		AB9BF51319D2F96400BFA9D1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				AB3EE58F19D3368900D279D1 /* Networking */,
 				AB9BF51619D2F98900BFA9D1 /* AppDelegate */,
 				AB9BF51719D2F98900BFA9D1 /* Main */,
 			);
@@ -88,14 +101,6 @@
 				AB9BF51919D2FA1600BFA9D1 /* MainView */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		AB9BF51519D2F96400BFA9D1 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Libraries;
-			path = Source/Libraries;
 			sourceTree = "<group>";
 		};
 		AB9BF51619D2F98900BFA9D1 /* AppDelegate */ = {
@@ -170,7 +175,6 @@
 				AB9BF51819D2F9C700BFA9D1 /* Assets */,
 				ABB671F619D31F5200333939 /* Categories */,
 				AB9BF51219D2F96400BFA9D1 /* Classes */,
-				AB9BF51519D2F96400BFA9D1 /* Libraries */,
 			);
 			path = Elmstagram;
 			sourceTree = "<group>";
@@ -293,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDCEFF619D2F4C800F3EA5D /* MCMainViewController.m in Sources */,
+				AB3EE59219D336BB00D279D1 /* MCNetworkManager.m in Sources */,
 				ABDCEFF319D2F4C800F3EA5D /* AppDelegate.m in Sources */,
 				ABB671F919D31F5200333939 /* UIView+Extensions.m in Sources */,
 				ABDCEFF019D2F4C800F3EA5D /* main.m in Sources */,

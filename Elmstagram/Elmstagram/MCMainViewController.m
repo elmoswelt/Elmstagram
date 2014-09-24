@@ -7,6 +7,7 @@
 //
 
 #import "MCMainViewController.h"
+#import "MCNetworkManager.h"
 #import "UIView+Extensions.h"
 
 // ------------------------------------------------------------------------------------------
@@ -156,7 +157,7 @@ static const CGFloat kSpacer = 10.0;
 
 - (IBAction)didTabUploadBarButtonItem:(id)sender
 {
-    NSLog(@"Upload");
+    [self uploadFile];
 }
 
 
@@ -189,5 +190,20 @@ static const CGFloat kSpacer = 10.0;
     
     self.imageView.image = self.originalImage;
 }
+
+
+- (void)uploadFile
+{
+    [MCNetworkManager uploadImage:self.imageView.image
+                     successBlock:^(NSURL *url)
+    {
+        NSLog(@"Success");
+    }
+                     failureBlock:^(NSError *error)
+    {
+        NSLog(@"Failure");
+    }];
+}
+
 
 @end
