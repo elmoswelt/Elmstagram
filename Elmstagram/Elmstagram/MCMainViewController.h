@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MCMainViewController.h
 //  Elmstagram
 //
 //  Created by Elmar Tampe on 24/09/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MCMainViewController : UIViewController
 
 
 @end

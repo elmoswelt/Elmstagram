@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  MCMainViewController.m
 //  Elmstagram
 //
 //  Created by Elmar Tampe on 24/09/14.
 //  Copyright (c) 2014 Elmar Tampe. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MCMainViewController.h"
 
-@interface ViewController ()
+@interface MCMainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MCMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
