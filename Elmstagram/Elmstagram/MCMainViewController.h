@@ -10,6 +10,8 @@
 
 @interface MCMainViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *imagePickerBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *uploadBarButtonItem;
 
 @end
 
