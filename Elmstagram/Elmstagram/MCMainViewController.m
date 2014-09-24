@@ -165,7 +165,7 @@ static const CGFloat kSpacer = 10.0;
 
 
 - (void)uploadFile
-{    
+{
     MCMainViewController __weak *weakSelf = self;
     
     [MCNetworkManager uploadImage:self.imageView.image
@@ -218,6 +218,7 @@ static const CGFloat kSpacer = 10.0;
 - (void)filterPickerControllerViewController:(MCFilterPickerControllerViewController *)filterPickerControllerViewController didFinishApplyingFilterWithResultImage:(UIImage *)image
 {
     self.imageView.image = image;
+    self.filterPicker.sourceImage = image;
 }
 
 @end
