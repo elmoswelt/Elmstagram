@@ -19,6 +19,8 @@
        successBlock:(void (^)(NSURL * url))successBlock
        failureBlock:(void (^)(NSError *error))failureBlock
 {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     if (image == nil)
     {
         if (failureBlock)
@@ -39,6 +41,8 @@
                                           {
                                               dispatch_async(dispatch_get_main_queue(), ^
                                               {
+                                                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                                  
                                                   if (error == nil)
                                                   {
                                                       if (successBlock)
