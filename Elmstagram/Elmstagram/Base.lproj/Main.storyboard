@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUJ-hZ-AzC">
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUJ-hZ-AzC">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
@@ -40,7 +40,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Blumen.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yS4-tx-y8x">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yS4-tx-y8x">
                                 <rect key="frame" x="0.0" y="72" width="600" height="426"/>
                             </imageView>
                         </subviews>
@@ -64,6 +64,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="yS4-tx-y8x" secondAttribute="trailing" constant="-16" id="zHG-Gq-puf"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="yS4-tx-y8x"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="Cu2-sL-VxZ"/>
                                 <exclude reference="V31-cn-iEz"/>
@@ -78,7 +81,6 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="imagePickerBarButtonITem" destination="eh7-EY-2KL" id="M2V-JI-Cgq"/>
-                        <outlet property="mainImageView" destination="yS4-tx-y8x" id="Q5P-sM-xMB"/>
                         <outlet property="uploadBarButtonItem" destination="o3y-dk-HFt" id="EeR-aj-VBm"/>
                     </connections>
                 </viewController>
@@ -86,7 +88,4 @@
             </objects>
         </scene>
     </scenes>
-    <resources>
-        <image name="Blumen.jpg" width="1024" height="768"/>
-    </resources>
 </document>
