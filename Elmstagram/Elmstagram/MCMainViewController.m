@@ -17,12 +17,14 @@ static const CGFloat kSpacer = 10.0;
 
 // ------------------------------------------------------------------------------------------
 
-@interface MCMainViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MCMainViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImage *originalImage;
 @property (nonatomic, strong) UIView *filterPickerView;
+
+@property (nonatomic, strong) NSURL *imageURL;
 
 @end
 
@@ -194,15 +196,49 @@ static const CGFloat kSpacer = 10.0;
 
 - (void)uploadFile
 {
+    MCMainViewController __weak *weakSelf = self;
+    
     [MCNetworkManager uploadImage:self.imageView.image
                      successBlock:^(NSURL *url)
     {
-        NSLog(@"Success");
+        weakSelf.imageURL = url;
+        [weakSelf showActionSheet];
     }
                      failureBlock:^(NSError *error)
     {
-        NSLog(@"Failure");
+        weakSelf.imageURL = nil;
+        [weakSelf showActionSheet];
     }];
+}
+
+
+// ------------------------------------------------------------------------------------------
+#pragma mark - UIActionSheet
+// ------------------------------------------------------------------------------------------
+- (void)showActionSheet
+{
+    NSString *title = self.imageURL ? @"Image upload successful! " : @"Upload error. Please try again.";
+    NSString *buttonTitle = self.imageURL ? @"Open Image in Safari" : nil;
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title
+                                                             delegate:self
+                                                    cancelButtonTitle:@"OK"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:buttonTitle, nil];
+    
+    [actionSheet showInView:self.view];
+}
+
+
+// ------------------------------------------------------------------------------------------
+#pragma mark - UIActionSheetDelegate
+// ------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        [[UIApplication sharedApplication] openURL:self.imageURL];
+    }
 }
 
 
