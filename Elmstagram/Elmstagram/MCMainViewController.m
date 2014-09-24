@@ -9,7 +9,6 @@
 #import "MCMainViewController.h"
 #import "MCNetworkManager.h"
 #import "MCFilterPickerControllerViewController.h"
-
 #import "UIView+Extensions.h"
 
 // ------------------------------------------------------------------------------------------
@@ -166,7 +165,7 @@ static const CGFloat kSpacer = 10.0;
 
 
 - (void)uploadFile
-{
+{    
     MCMainViewController __weak *weakSelf = self;
     
     [MCNetworkManager uploadImage:self.imageView.image
@@ -220,4 +219,5 @@ static const CGFloat kSpacer = 10.0;
 {
     self.imageView.image = image;
 }
+
 @end
