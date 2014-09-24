@@ -10,6 +10,8 @@
 #import "MCNetworkManager.h"
 #import "MCImageFilter.h"
 
+#import "MCFilterCollectionViewCell.h"
+
 #import "UIView+Extensions.h"
 
 // ------------------------------------------------------------------------------------------
@@ -19,12 +21,18 @@ static const CGFloat kSpacer = 10.0;
 
 // ------------------------------------------------------------------------------------------
 
-@interface MCMainViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
+@interface MCMainViewController () <UIImagePickerControllerDelegate,
+                                    UINavigationControllerDelegate,
+                                    UIActionSheetDelegate,
+                                    UICollectionViewDataSource,
+                                    UICollectionViewDelegate>
 
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImage *originalImage;
+
 @property (nonatomic, strong) UIView *filterPickerView;
+@property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) NSURL *imageURL;
 
@@ -83,26 +91,26 @@ static const CGFloat kSpacer = 10.0;
     CGRect rect = CGRectMake(kSpacer, 0.0, self.view.frame.size.width - 2.0 * kSpacer, 100.0);
     self.filterPickerView = [[UIView alloc] initWithFrame:rect];
     self.filterPickerView.bottom = self.view.height - kSpacer - self.filterPickerView.height;
-    self.filterPickerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1];
+    self.filterPickerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.4];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(kSpacer, 20.0, 100.0, 44.0);
-    [button setTitle:@"Apply Filter" forState:UIControlStateNormal];
-    button.layer.cornerRadius = 3.0;
-    button.layer.borderColor = [UIColor redColor].CGColor;
-    button.layer.borderWidth = 1.0;
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    [button addTarget:self action:@selector(didTapApplyFilter:) forControlEvents:UIControlEventTouchUpInside];
-    [self.filterPickerView addSubview:button];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.filterPickerView.bounds
+                                             collectionViewLayout:layout];
+
+    self.collectionView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.23];
     
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
+    [self.collectionView registerClass:[MCFilterCollectionViewCell class]
+            forCellWithReuseIdentifier:[MCFilterCollectionViewCell reuseIdentifier]];
+    
+    [self.filterPickerView addSubview:self.collectionView];
     [self.view addSubview:self.filterPickerView];
 }
 
-
-- (void)didTapApplyFilter:(id)sender
-{
-    self.imageView.image = [MCImageFilter colorPosterizeImageWithImage:self.imageView.image];
-}
 
 
 - (void)setupFilterDescriptionLabel
@@ -115,6 +123,91 @@ static const CGFloat kSpacer = 10.0;
     label.textAlignment = NSTextAlignmentCenter;
     
     [self.view addSubview:label];
+}
+
+
+// ------------------------------------------------------------------------------------------
+#pragma mark - UICollectionViewDataSource
+// ------------------------------------------------------------------------------------------
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *reuseIdentifier = [MCFilterCollectionViewCell reuseIdentifier];
+    
+    MCFilterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier
+                                                                                 forIndexPath:indexPath];
+    
+    cell.cellIndex = indexPath.row;
+        
+    return cell;
+}
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(85.0, 85.0);
+}
+
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 10.0;
+}
+
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self applyFilterForIndex:indexPath.row];
+}
+
+
+- (void)applyFilterForIndex:(NSUInteger)index
+{
+    switch (index)
+    {
+        case MCImageFilterTypeBlurr:
+        {
+            self.imageView.image = [MCImageFilter blurredImageWithImage:self.originalImage];
+            break;
+        }
+        case MCImageFilterTypeColorInvert:
+        {
+            self.imageView.image = [MCImageFilter colorInvertedImageWithImage:self.originalImage];
+            break;
+        }
+        case MCImageFilterTypeSharpen:
+        {
+            self.imageView.image = [MCImageFilter sharpendImageWithImage:self.originalImage];
+            break;
+        }
+        case MCImageFilterTypeSepia:
+        {
+            self.imageView.image = [MCImageFilter sepiaImageWithImage:self.originalImage];
+            break;
+        }
+        case MCImageFilterTypeColorPosterize:
+        {
+            self.imageView.image = [MCImageFilter colorPosterizeImageWithImage:self.originalImage];
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 
@@ -219,6 +312,5 @@ static const CGFloat kSpacer = 10.0;
         [[UIApplication sharedApplication] openURL:self.imageURL];
     }
 }
-
 
 @end

@@ -9,7 +9,24 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+
+// ------------------------------------------------------------------------------------------
+
+typedef NS_ENUM(NSUInteger, MCImageFilterType)
+{
+    MCImageFilterTypeBlurr = 0,
+    MCImageFilterTypeColorInvert,
+    MCImageFilterTypeSharpen,
+    MCImageFilterTypeSepia,
+    MCImageFilterTypeColorPosterize,
+    MCImageFilterTypeCount
+};
+
+// ------------------------------------------------------------------------------------------
+
+
 @interface MCImageFilter : NSObject
+
 
 + (UIImage *)blurredImageWithImage:(UIImage *)sourceImage;
 
