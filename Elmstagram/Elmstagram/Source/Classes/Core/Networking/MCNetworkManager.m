@@ -37,31 +37,34 @@
                                                                   fromData:urlRequestBody
                                                          completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
                                           {
-                                              if (error == nil)
+                                              dispatch_async(dispatch_get_main_queue(), ^
                                               {
-                                                  if (successBlock)
+                                                  if (error == nil)
                                                   {
-                                                      if (((NSHTTPURLResponse *) response).statusCode == 200)
+                                                      if (successBlock)
                                                       {
-                                                          successBlock([MCNetworkManager imageURLFromResponseJSONData:data]);
-                                                      }
-                                                      else
-                                                      {
-                                                          if (failureBlock)
+                                                          if (((NSHTTPURLResponse *) response).statusCode == 200)
                                                           {
-                                                              failureBlock([MCNetworkManager uploadError]);
+                                                              successBlock([MCNetworkManager imageURLFromResponseJSONData:data]);
+                                                          }
+                                                          else
+                                                          {
+                                                              if (failureBlock)
+                                                              {
+                                                                  failureBlock([MCNetworkManager uploadError]);
+                                                              }
                                                           }
                                                       }
                                                   }
-                                              }
-                                              else
-                                              {
-                                                  if (failureBlock)
+                                                  else
                                                   {
-                                                      failureBlock([MCNetworkManager uploadError]);
+                                                      if (failureBlock)
+                                                      {
+                                                          failureBlock([MCNetworkManager uploadError]);
+                                                      }
                                                   }
-                                              }
-                                          }];
+                                              });
+                                            }];
     
     [uploadTask resume];
 }
