@@ -28,6 +28,8 @@
             failureBlock([MCNetworkManager imputError]);
         }
         
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
         return;
     }
     
