@@ -11,6 +11,8 @@
 		AB32C76A19D41AF2004F1752 /* MCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB32C76919D41AF2004F1752 /* MCMainViewController.m */; };
 		AB32C76C19D41B19004F1752 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB32C76B19D41B19004F1752 /* main.m */; };
 		AB32C76E19D41B4F004F1752 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB32C76D19D41B4F004F1752 /* Images.xcassets */; };
+		AB32C77419D41C1C004F1752 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB32C77019D41C1C004F1752 /* LaunchScreen.xib */; };
+		AB32C77519D41C1C004F1752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB32C77219D41C1C004F1752 /* Main.storyboard */; };
 		AB3EE59219D336BB00D279D1 /* MCNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3EE59119D336BB00D279D1 /* MCNetworkManager.m */; };
 		AB3EE59619D34C5900D279D1 /* MCImageFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3EE59519D34C5900D279D1 /* MCImageFilter.m */; };
 		AB3EE5B419D35F2D00D279D1 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3EE5AF19D35F2D00D279D1 /* 1.png */; };
@@ -21,8 +23,6 @@
 		AB3EE5BD19D3638700D279D1 /* MCFilterPickerControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3EE5BC19D3638700D279D1 /* MCFilterPickerControllerViewController.m */; };
 		AB3EE5C119D363A200D279D1 /* MCFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3EE5C019D363A200D279D1 /* MCFilterCollectionViewCell.m */; };
 		ABB671F919D31F5200333939 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB671F819D31F5200333939 /* UIView+Extensions.m */; };
-		ABDCEFF919D2F4C800F3EA5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDCEFF719D2F4C800F3EA5D /* Main.storyboard */; };
-		ABDCEFFE19D2F4C800F3EA5D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDCEFFC19D2F4C800F3EA5D /* LaunchScreen.xib */; };
 		ABDCF00A19D2F4C800F3EA5D /* ElmstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDCF00919D2F4C800F3EA5D /* ElmstagramTests.m */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +43,8 @@
 		AB32C76919D41AF2004F1752 /* MCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMainViewController.m; sourceTree = "<group>"; };
 		AB32C76B19D41B19004F1752 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB32C76D19D41B4F004F1752 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AB32C77119D41C1C004F1752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AB32C77319D41C1C004F1752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB3EE59019D336BB00D279D1 /* MCNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNetworkManager.h; sourceTree = "<group>"; };
 		AB3EE59119D336BB00D279D1 /* MCNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCNetworkManager.m; sourceTree = "<group>"; };
 		AB3EE59419D34C5900D279D1 /* MCImageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCImageFilter.h; sourceTree = "<group>"; };
@@ -60,8 +62,6 @@
 		ABB671F819D31F5200333939 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		ABDCEFEA19D2F4C800F3EA5D /* Elmstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elmstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDCEFEE19D2F4C800F3EA5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Elmstagram/Info.plist; sourceTree = "<group>"; };
-		ABDCEFF819D2F4C800F3EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		ABDCEFFD19D2F4C800F3EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		ABDCF00319D2F4C800F3EA5D /* ElmstagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElmstagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDCF00819D2F4C800F3EA5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABDCF00919D2F4C800F3EA5D /* ElmstagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElmstagramTests.m; sourceTree = "<group>"; };
@@ -85,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB32C76F19D41C1C004F1752 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AB32C77019D41C1C004F1752 /* LaunchScreen.xib */,
+				AB32C77219D41C1C004F1752 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		AB3EE58F19D3368900D279D1 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,15 +110,6 @@
 				AB3EE59519D34C5900D279D1 /* MCImageFilter.m */,
 			);
 			path = Filter;
-			sourceTree = "<group>";
-		};
-		AB3EE59719D354A600D279D1 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				ABDCEFFC19D2F4C800F3EA5D /* LaunchScreen.xib */,
-				ABDCEFF719D2F4C800F3EA5D /* Main.storyboard */,
-			);
-			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		AB3EE5A719D359DD00D279D1 /* FilterPicker */ = {
@@ -203,9 +203,9 @@
 		AB9BF51919D2FA1600BFA9D1 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				AB32C76F19D41C1C004F1752 /* Storyboards */,
 				AB32C76819D41AF2004F1752 /* MCMainViewController.h */,
 				AB32C76919D41AF2004F1752 /* MCMainViewController.m */,
-				AB3EE59719D354A600D279D1 /* Storyboards */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -348,12 +348,12 @@
 			files = (
 				AB3EE5BA19D3623700D279D1 /* 0.png in Resources */,
 				AB32C76E19D41B4F004F1752 /* Images.xcassets in Resources */,
-				ABDCEFF919D2F4C800F3EA5D /* Main.storyboard in Resources */,
 				AB3EE5B719D35F2D00D279D1 /* 4.png in Resources */,
+				AB32C77519D41C1C004F1752 /* Main.storyboard in Resources */,
+				AB32C77419D41C1C004F1752 /* LaunchScreen.xib in Resources */,
 				AB3EE5B419D35F2D00D279D1 /* 1.png in Resources */,
 				AB3EE5B519D35F2D00D279D1 /* 2.png in Resources */,
 				AB3EE5B619D35F2D00D279D1 /* 3.png in Resources */,
-				ABDCEFFE19D2F4C800F3EA5D /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,22 +401,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ABDCEFF719D2F4C800F3EA5D /* Main.storyboard */ = {
+		AB32C77019D41C1C004F1752 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ABDCEFF819D2F4C800F3EA5D /* Base */,
-			);
-			name = Main.storyboard;
-			path = ../../../..;
-			sourceTree = "<group>";
-		};
-		ABDCEFFC19D2F4C800F3EA5D /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ABDCEFFD19D2F4C800F3EA5D /* Base */,
+				AB32C77119D41C1C004F1752 /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = ../../../..;
+			sourceTree = "<group>";
+		};
+		AB32C77219D41C1C004F1752 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB32C77319D41C1C004F1752 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
